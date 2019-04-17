@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using SGC.UI.WEB.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SGC.Infrastructure.Data;
 
 namespace SGC.UI.WEB
 {
@@ -38,6 +39,11 @@ namespace SGC.UI.WEB
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ClienteContext>(options =>
+             options.UseSqlServer(
+                 Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
