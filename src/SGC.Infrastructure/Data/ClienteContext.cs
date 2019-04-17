@@ -12,7 +12,7 @@ namespace SGC.Infrastructure.Data
         /// Contrutor do Context do Cliente
         /// </summary>
         /// <param name="options"></param>
-        public ClienteContext(DbContextOptions<ClienteContext> options ):base (options)
+        public ClienteContext(DbContextOptions<ClienteContext> options) : base(options)
         {
 
         }
@@ -20,10 +20,39 @@ namespace SGC.Infrastructure.Data
         /// <summary>
         /// (DbSet) Mapear a Classe do Cliente. (Cliente = CRUD)
         /// </summary>
-        public DbSet<Cliente> Clientes{ get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Contato> Contatos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente>().ToTable("Tb_cliente");
+            modelBuilder.Entity<Cliente>().ToTable("Cliente");
+            modelBuilder.Entity<Contato>().ToTable("Contato");
+
+
+
+            #region Configurações de Clientes
+            //Entidade Cliente 
+            modelBuilder.Entity<Cliente>().Property(e => e.CPF)
+              .HasColumnType("varchar(11)")
+              .IsRequired();
+
+            modelBuilder.Entity<Cliente>().Property(e => e.Nome)
+              .HasColumnType("varchar(200)")
+              .IsRequired();
+            #endregion
+
+            #region Configurações de Contatos
+            //Entidade Contato
+            modelBuilder.Entity<Contato>().Property(e => e.Nome)
+              .HasColumnType("varchar(200)")
+              .IsRequired();
+
+            modelBuilder.Entity<Contato>().Property(e => e.Email)
+              .HasColumnType("varchar(100)")
+              .IsRequired();
+
+            modelBuilder.Entity<Contato>().Property(e => e.Telefone)
+             .HasColumnType("varchar(15)");
+            #endregion
         }
     }
 }

@@ -4,15 +4,19 @@ using System.Text;
 
 namespace SGC.ApplicationCore.Entity
 {
-    public class Cliente
+    public class Contato
     {
-        public Cliente()
+        public Contato()
         {
 
         }
+
         public int Id { get; protected set; }
         public string Nome { get; set; }
-        public string CPF { get; set; }
-        public ICollection<Contato> Contato { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
+
     }
 }
