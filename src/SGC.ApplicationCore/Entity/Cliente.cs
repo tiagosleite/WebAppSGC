@@ -10,9 +10,11 @@ namespace SGC.ApplicationCore.Entity
         {
 
         }
-        public int Id { get; protected set; }
+        public int ClienteId { get; protected set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public ICollection<Contato> Contato { get; set; }
+        public Endereco Endereco { get; set; }
+        public ICollection<ProfissaoCliente> ProfissoesClientes { get; set; }
     }
 }

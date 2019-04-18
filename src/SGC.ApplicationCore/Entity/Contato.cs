@@ -11,7 +11,7 @@ namespace SGC.ApplicationCore.Entity
 
         }
 
-        public int Id { get; protected set; }
+        public int ContatoId { get; protected set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }

@@ -16,31 +16,30 @@ namespace SGC.UI.WEB
     {
         public static void Main(string[] args)
         {
-            // CreateWebHostBuilder(args).Build().Run();
+             CreateWebHostBuilder(args).Build().Run();
 
-            var host = CreateWebHostBuilder(args);
+            //var host = CreateWebHostBuilder(args);
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    var context = services.GetRequiredService<ClienteContext>();
-                    DBInitializer.Initialize(context);
-                }
-                catch (Exception ex)
-                {
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    try
+            //    {
+            //        var context = services.GetRequiredService<ClienteContext>();
+            //        DBInitializer.Initialize(context);
+            //    }
+            //    catch (Exception ex)
+            //    {
 
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "Um erro ocorreu no método seeding do contexto.");
-                }
-            }
-            host.Run();
+            //        var logger = services.GetRequiredService<ILogger<Program>>();
+            //        logger.LogError(ex, "Um erro ocorreu no método seeding do contexto.");
+            //    }
+            //}
+            //host.Run();
         }
 
-        public static IWebHost CreateWebHostBuilder(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
     }
 }
