@@ -16,14 +16,14 @@ namespace SGC.Infrastructure.Repository
         {
             _dbcontext = dbContext;
         }
-        public T Adicionar(T entity)
+        public virtual T Adicionar(T entity)
         {
             _dbcontext.Set<T>().Add(entity);
             _dbcontext.SaveChanges();
             return entity;
         }
 
-        public void Atualizar(T entity)
+        public virtual void Atualizar(T entity)
         {
             _dbcontext.Entry(entity).State = EntityState.Modified;
             _dbcontext.SaveChanges();
@@ -35,7 +35,7 @@ namespace SGC.Infrastructure.Repository
             return _dbcontext.Set<T>().Where(predicado);
         }
 
-        public T ObterID(int id)
+        public virtual T ObterID(int id)
         {
             return _dbcontext.Set<T>().Find(id);
         }
